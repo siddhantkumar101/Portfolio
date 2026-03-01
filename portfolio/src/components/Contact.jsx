@@ -112,9 +112,10 @@ function Contact() {
             rounded-2xl p-8 backdrop-blur-xl space-y-6"
           >
 
+            {/* ✅ FIXED HERE */}
             <input
               type="text"
-              name="from_name"
+              name="name"
               placeholder="Your Name"
               required
               className="w-full bg-white/5 border border-white/10 
@@ -124,7 +125,7 @@ function Contact() {
 
             <input
               type="email"
-              name="from_email"
+              name="email"
               placeholder="Your Email"
               required
               className="w-full bg-white/5 border border-white/10 
