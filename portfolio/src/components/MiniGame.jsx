@@ -75,7 +75,7 @@ function ReactionExperiment() {
 
   return (
     <section
-      id="reaction-experiment"
+      id="game"
       className="min-h-screen bg-[#070d1a] text-white px-6 py-28 flex flex-col items-center justify-center"
     >
 

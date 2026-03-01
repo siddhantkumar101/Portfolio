@@ -21,7 +21,7 @@ function Navbar() {
     "Projects",
     "Skills",
     "Game",
-    "Achievements",
+   
     "Contact"
   ]
 
