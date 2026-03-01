@@ -31,8 +31,8 @@ function Projects() {
     desc: "Real-time currency converter using API.",
     tech: ["JS", "API"],
     github: "#",
-    live: "#",
-    featured: false,
+    live: "https://react-basic-7ygb.vercel.app/",
+    featured: true,
   },
   {
     title: "Todo App",
@@ -40,8 +40,8 @@ function Projects() {
     desc: "Task manager with local storage.",
     tech: ["React"],
     github: "#",
-    live: "#",
-    featured: false,
+    live: "https://react-basic-phi-roan.vercel.app/",
+    featured: true,
   },
 ]
   return (
