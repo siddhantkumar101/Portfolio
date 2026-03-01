@@ -14,7 +14,7 @@ function Projects() {
     tech: ["React", "Tailwind", "JS"],
     github: "#",
     live: "#",
-    featured: true,
+    featured: false,
   },
   {
     title: "Evento",
@@ -23,7 +23,7 @@ function Projects() {
     tech: ["React", "CSS"],
     github: "#",
     live: "#",
-    featured: true,
+    featured: false,
   },
   {
     title: "Currency Converter",
