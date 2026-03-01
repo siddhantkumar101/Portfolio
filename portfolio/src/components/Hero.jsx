@@ -63,9 +63,12 @@ function Hero() {
               View Projects
             </button>
 
-            <button className="px-7 py-3 border border-gray-600 rounded-lg hover:bg-gray-800 transition">
-              Download CV
-            </button>
+           <button
+  onClick={() => window.open("/resume.pdf")}
+  className="px-7 py-3 border border-gray-600 rounded-lg hover:bg-gray-800 transition"
+>
+  Download CV
+</button>
           </div>
 
           {/* Social Icons */}

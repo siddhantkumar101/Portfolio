@@ -69,21 +69,24 @@ function About() {
 
               {[
                 {
-                  year: "2023 – 2027",
+                  year: "2024 – 2028",
                   title: "B.Tech in Computer Science",
                   desc: "IIIT Dharwad",
+                  grade:"9.05 CGPA",
                   color: "from-purple-500 to-blue-500"
                 },
                 {
-                  year: "2021 – 2023",
+                  year: "2022 – 2024",
                   title: "Class XII (CBSE)",
-                  desc: "Senior Secondary",
+                  desc: "Ryan International School",
+                  grade:"90.6%",
                   color: "from-blue-500 to-cyan-500"
                 },
                 {
-                  year: "2019 – 2021",
+                  year: "2020 – 2022",
                   title: "Class X (CBSE)",
-                  desc: "Secondary",
+                  desc: "Ryan International School",
+                  grade:"93.2%",
                   color: "from-cyan-500 to-purple-500"
                 },
               ].map((item, index) => (
@@ -92,7 +95,7 @@ function About() {
                   initial={{ opacity: 0, x: -50 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: true }}
+                  viewport={{ once: false }}
                   className="mb-14 relative pl-8"
                 >
                   {/* Gradient Dot */}
@@ -110,6 +113,9 @@ function About() {
                     <p className="text-gray-400 text-sm mt-1">
                       {item.desc}
                     </p>
+                     <p className="text-purple-300 text-sm mt-2 font-semibold">
+    {item.grade}
+  </p>
                   </div>
                 </motion.div>
               ))}
@@ -126,11 +132,11 @@ function About() {
             </h3>
 
             {[
-              { name: "DSA", percent: 85, color: "from-purple-500 to-pink-500" },
-              { name: "React / Next.js", percent: 80, color: "from-blue-500 to-cyan-500" },
-              { name: "C++ / CP", percent: 88, color: "from-indigo-500 to-purple-500" },
-              { name: "Node.js", percent: 75, color: "from-green-400 to-emerald-600" },
-              { name: "System Design", percent: 65, color: "from-yellow-400 to-orange-500" },
+              { name: "DSA", percent: 50, color: "from-purple-500 to-pink-500" },
+              { name: "React ", percent: 100, color: "from-blue-500 to-cyan-500" },
+              { name: "C++ ", percent: 100, color: "from-indigo-500 to-purple-500" },
+              { name: "Node.js", percent: 10, color: "from-green-400 to-emerald-600" },
+              { name: "System Design", percent: 10, color: "from-yellow-400 to-orange-500" },
             ].map((skill, index) => (
               <div key={index} className="mb-8">
 
@@ -162,14 +168,14 @@ function About() {
             <div className="flex flex-wrap gap-3">
               {[
                 "React ⚛️",
-                "Next.js",
-                "TypeScript",
+                
+                
                 "C++",
                 "Python 🐍",
-                "Node.js",
-                "MongoDB",
-                "PostgreSQL",
-                "Docker 🐳",
+                
+              
+              
+                
                 "Git",
                 "Tailwind",
                 "Redis"
