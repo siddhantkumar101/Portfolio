@@ -1,15 +1,23 @@
-import { motion } from "framer-motion";
-import { useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import Toast from "./Toast"; // ✅ Correct import (same folder)
 
 function Contact() {
   const form = useRef();
+  const [toastMessage, setToastMessage] = useState(null);
+
+  const showToast = (message) => {
+    setToastMessage(message);
+    setTimeout(() => {
+      setToastMessage(null);
+    }, 3000);
+  };
 
   const sendEmail = (e) => {
     e.preventDefault();
 
-    // Get form data explicitly
     const formData = new FormData(form.current);
 
     emailjs
@@ -24,11 +32,11 @@ function Contact() {
         "LIQ7HGPmkne7jF8zb"
       )
       .then(() => {
-        alert("Message sent successfully 🚀");
+        showToast("Message sent successfully.");
         form.current.reset();
       })
       .catch((error) => {
-        alert("Failed to send ❌");
+        showToast("Failed to send message.");
         console.log(error);
       });
   };
@@ -38,6 +46,13 @@ function Contact() {
       id="contact"
       className="min-h-screen bg-[#070d1a] text-white px-6 md:px-8 py-28 relative overflow-hidden"
     >
+      {/* Toast */}
+      <AnimatePresence>
+        {toastMessage && (
+          <Toast message={toastMessage} />
+        )}
+      </AnimatePresence>
+
       {/* Background Glow */}
       <div className="absolute -top-40 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-[120px] rounded-full"></div>
       <div className="absolute -bottom-40 right-0 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full"></div>
@@ -63,11 +78,13 @@ function Contact() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <h3 className="text-2xl font-semibold mb-6">Get In Touch 🚀</h3>
+            <h3 className="text-2xl font-semibold mb-6">
+              Get In Touch
+            </h3>
+
             <p className="text-gray-400 mb-8 leading-relaxed">
-              I’m currently open to internship opportunities,
-              collaborations, and exciting tech discussions.
-              Feel free to reach out anytime!
+              I’m currently open to research and internship opportunities.
+              Feel free to reach out.
             </p>
 
             <div className="space-y-6">
