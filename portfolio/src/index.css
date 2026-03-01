@@ -1,7 +1,18 @@
 @import "tailwindcss";
 
-body {
-  background-color: #000000;
-  color: white;
-  
+/* Smooth transition */
+html {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* LIGHT MODE FORCE */
+html:not(.dark) body {
+  background-color: white !important;
+  color: black !important;
+}
+
+/* Override dark hardcoded backgrounds in light mode */
+html:not(.dark) section {
+  background-color: white !important;
+  color: black !important;
 }

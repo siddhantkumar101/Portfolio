@@ -6,13 +6,20 @@ import Skills from "./components/Skills"
 import MiniGame from "./components/MiniGame"
 import Contact from "./components/Contact"
 import Footer from "./components/Footer"
-
+import { useTheme } from "./context/ThemeContext"
 
 function App() {
-  return (
+  const { darkMode } = useTheme()
 
-    <div className="font-sans">
-     
+  return (
+    <div
+      className={`
+        font-sans min-h-screen transition-colors duration-300
+        ${darkMode 
+          ? "bg-[#070d1a] text-white" 
+          : "bg-white text-black"}
+      `}
+    >
       <Navbar />
       <Hero />
       <About />
