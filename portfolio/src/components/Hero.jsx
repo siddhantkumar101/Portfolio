@@ -1,126 +1,77 @@
 import { motion } from "framer-motion"
-import { TypeAnimation } from "react-type-animation"
 import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa"
 import { SiLeetcode } from "react-icons/si"
 
 function Hero() {
   return (
-    <section
-      className="relative min-h-screen 
-      bg-white dark:bg-[#070d1a] 
-      text-black dark:text-white 
-      overflow-hidden transition-colors duration-300"
-    >
-      {/* Background Glow */}
-      <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] 
-        bg-purple-600/20 blur-[140px] rounded-full"></div>
+    <section className="min-h-screen bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 flex items-center">
 
-      <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] 
-        bg-blue-600/20 blur-[140px] rounded-full"></div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b 
-        from-transparent 
-        via-gray-100 dark:via-[#0b1120] 
-        to-white dark:to-[#070d1a]">
-      </div>
-
-      <div className="relative max-w-7xl mx-auto px-8 
-        flex flex-col md:flex-row items-center justify-between min-h-screen">
+      <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-16 items-center">
 
         {/* LEFT SIDE */}
         <motion.div
-          initial={{ opacity: 0, x: -80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="md:w-1/2 space-y-8 z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
         >
 
-          {/* Availability Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full 
-            bg-purple-600/20 border border-purple-500/30 
-            text-sm text-purple-600 dark:text-purple-300">
-            <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-            Available for internships · 2026
-          </div>
-
-          <p className="text-gray-600 dark:text-gray-400">
-            Hey there, I'm
+          {/* Terminal Intro */}
+          <p className="font-mono text-sm text-[#8b949e] mb-4">
+            $ whoami
           </p>
 
-          <h1 className="text-7xl md:text-8xl font-extrabold tracking-tight leading-[1.05]">
-            <span className="bg-gradient-to-r 
-              from-purple-400 via-blue-400 to-indigo-500 
-              bg-clip-text text-transparent">
-              Siddhant
-            </span>
-            <br />
-            <span className="text-black dark:text-white">
-              Kumar
-            </span>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-6">
+            Siddhant Kumar
           </h1>
 
-          <TypeAnimation
-            sequence={[
-              "Problem Solver",
-              2000,
-              "React Developer",
-              2000,
-              "Full Stack Learner",
-              2000
-            ]}
-            speed={50}
-            repeat={Infinity}
-            className="text-purple-600 dark:text-purple-400 text-xl"
-          />
-
-          <p className="text-gray-600 dark:text-gray-400 text-lg max-w-lg">
-            Passionate about building scalable web applications and mastering Data Structures & Algorithms.
+          <p className="font-mono text-[#3fb950] mb-6">
+            B.Tech CSE Student @ IIIT Dharwad
           </p>
 
-          {/* Download CV Button */}
-          <div className="pt-4">
-            <button
-              onClick={() => window.open("/resume.pdf")}
-              className="px-7 py-3 
-                border border-gray-400 dark:border-gray-600 
-                rounded-lg 
-                hover:bg-gray-200 dark:hover:bg-gray-800 
-                transition hover:scale-105">
-              Download CV
-            </button>
+          <div className="font-mono text-sm text-[#8b949e] mb-8">
+{`const focus = [
+  "Data Structures & Algorithms",
+  "Competitive Programming",
+  "Full Stack Development"
+];`}
           </div>
 
-          {/* Social Icons */}
-          <div className="flex gap-4 pt-6">
-            {[{
-              icon: <FaGithub />,
-              link: "https://github.com/siddhantkumar101"
-            },
-            {
-              icon: <FaLinkedin />,
-              link: "https://www.linkedin.com/in/siddhant-kumar-dev"
-            },
-            {
-              icon: <FaEnvelope />,
-              link: "mailto:kumarsiddhant815@gmail.com"
-            },
-            {
-              icon: <SiLeetcode />,
-              link: "https://leetcode.com/u/siddhant080306/"
-            }].map((item, index) => (
+          <p className="text-[#8b949e] max-w-lg mb-10">
+            Building scalable web applications while consistently improving
+            problem-solving skills and system design fundamentals.
+          </p>
+
+          {/* Buttons */}
+          <div className="flex gap-4 mb-10">
+            <button
+              onClick={() => window.open("/resume.pdf")}
+              className="px-6 py-3 border border-[#3fb950] text-[#3fb950] rounded-md hover:bg-[#3fb950] hover:text-black transition"
+            >
+              resume.pdf
+            </button>
+
+            <a
+              href="#contact"
+              className="px-6 py-3 border border-[#30363d] rounded-md hover:border-[#3fb950] transition"
+            >
+              contact()
+            </a>
+          </div>
+
+          {/* Social Links */}
+          <div className="flex gap-4 text-lg">
+            {[
+              { icon: <FaGithub />, link: "https://github.com/siddhantkumar101" },
+              { icon: <FaLinkedin />, link: "https://www.linkedin.com/in/siddhant-kumar-dev" },
+              { icon: <FaEnvelope />, link: "mailto:kumarsiddhant815@gmail.com" },
+              { icon: <SiLeetcode />, link: "https://leetcode.com/u/siddhant080306/" }
+            ].map((item, index) => (
               <a
                 key={index}
                 href={item.link}
                 target="_blank"
                 rel="noreferrer"
-                className="w-12 h-12 flex items-center justify-center 
-                  rounded-xl 
-                  bg-black/5 dark:bg-white/5 
-                  backdrop-blur-lg 
-                  border border-gray-300 dark:border-white/10 
-                  hover:bg-black/10 dark:hover:bg-white/10
-                  transition hover:scale-110"
+                className="p-3 bg-[#161b22] border border-[#30363d] rounded-md hover:border-[#3fb950] transition"
               >
                 {item.icon}
               </a>
@@ -129,58 +80,32 @@ function Hero() {
 
         </motion.div>
 
-        {/* RIGHT SIDE IMAGE */}
+        {/* RIGHT SIDE */}
         <motion.div
-          initial={{ opacity: 0, x: 80 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1 }}
-          className="md:w-1/2 flex justify-center mt-16 md:mt-0 relative z-10"
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="flex justify-center"
         >
-          <motion.div
-            animate={{ y: [0, -15, 0] }}
-            transition={{ duration: 6, repeat: Infinity }}
-            className="relative"
-          >
-            <div className="absolute inset-0 rounded-3xl 
-              bg-gradient-to-tr from-purple-500/40 to-blue-500/40 
-              blur-2xl">
-            </div>
+          <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm w-full max-w-md">
 
-            <img
-              src="/yourphoto.jpg"
-              alt="profile"
-              className="relative w-80 md:w-96 rounded-3xl 
-                border border-gray-300 dark:border-white/10 
-                shadow-2xl"
-            />
-          </motion.div>
+            <p className="text-[#8b949e] mb-4">
+              // stats.json
+            </p>
 
-          {/* LeetCode Floating Card */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.5 }}
-            className="absolute -left-16 top-10 
-              bg-gray-200/70 dark:bg-[#111827]/70 
-              backdrop-blur-lg 
-              px-4 py-2 rounded-xl 
-              border border-gray-300 dark:border-white/10"
-          >
-            <p className="text-xs text-gray-600 dark:text-gray-400">
-              LeetCode
-            </p>
-            <p className="text-sm font-semibold text-purple-600 dark:text-purple-400">
-              siddhant080306
-            </p>
-          </motion.div>
+<pre className="whitespace-pre-wrap">
+{`{
+  "cgpa": "9.05",
+  "leetcodeTarget": "10/day",
+  "primaryLanguage": "C++",
+  "currentFocus": "Internship 2026",
+  "location": "India"
+}`}
+</pre>
+
+          </div>
         </motion.div>
 
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 
-        text-gray-600 dark:text-gray-400 text-sm animate-bounce">
-        Scroll ↓
       </div>
 
     </section>

@@ -4,198 +4,134 @@ function About() {
   return (
     <section
       id="about"
-      className="min-h-screen bg-[#070d1a] text-white px-6 md:px-8 py-28 relative overflow-hidden"
+      className="min-h-screen bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-28"
     >
-      {/* Background Glow Blobs */}
-      <div className="absolute -top-40 -left-40 w-[500px] h-[500px] bg-purple-600/20 blur-[120px] rounded-full"></div>
-      <div className="absolute -bottom-40 -right-40 w-[500px] h-[500px] bg-cyan-600/20 blur-[120px] rounded-full"></div>
+      <div className="max-w-6xl mx-auto">
 
-      <div className="max-w-6xl mx-auto relative z-10">
-
-        {/* Top Label */}
-        <p className="text-center text-purple-400 text-sm tracking-widest mb-4">
-          01. ABOUT 🚀
+        {/* Section Label */}
+        <p className="text-sm text-[#8b949e] font-mono mb-4">
+          // 01. About
         </p>
 
         {/* Heading */}
         <motion.h2
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-center text-5xl md:text-6xl font-extrabold mb-20 
-          bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 
-          bg-clip-text text-transparent"
+          className="text-4xl md:text-5xl font-bold mb-16"
         >
-          Who I Am
+          About Me
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-20 items-start">
+        <div className="grid md:grid-cols-2 gap-16">
 
-          {/* LEFT SIDE */}
-          <div>
+          {/* LEFT SIDE - CODE PROFILE */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm"
+          >
+            <div className="text-[#8b949e] mb-4">// SiddhantProfile.js</div>
 
-            {/* Story Card */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-              className="bg-gradient-to-br from-purple-600/10 to-blue-600/10 
-              border border-purple-500/20 rounded-2xl p-7 
-              backdrop-blur-xl mb-16 hover:scale-[1.02] transition"
-            >
-              <h3 className="text-xl font-semibold mb-4 text-purple-300">
-                👨‍💻 My Journey
-              </h3>
+            <pre className="whitespace-pre-wrap leading-relaxed">
+{`const siddhant = {
+  role: "B.Tech CSE Student",
+  college: "IIIT Dharwad",
+  cgpa: "9.05",
+  focus: ["DSA", "Competitive Programming", "Full Stack"],
+  dailyRoutine: "10 Leetcode Problems",
+  preparingFor: "Top Internship 2026",
+};`}
+            </pre>
+          </motion.div>
 
-              <p className="text-gray-300 leading-relaxed text-[15px] mb-4">
-                I’m Siddhant, a Computer Science student focused on mastering
-                DSA and building modern web systems.
-              </p>
+          {/* RIGHT SIDE - EDUCATION FLOW */}
+          <div className="relative">
 
-              <p className="text-gray-400 leading-relaxed text-[15px]">
-                Preparing for internships, sharpening problem-solving skills,
-                and learning system design fundamentals ⚡
-              </p>
-            </motion.div>
-
-            {/* Education */}
-            <h3 className="text-xl font-semibold mb-8 text-cyan-400">
-              🎓 Education
-            </h3>
-
-            <div className="relative border-l-2 border-gradient-to-b from-purple-500 via-blue-500 to-cyan-500 ml-4">
-
-              {[
-                {
-                  year: "2024 – 2028",
-                  title: "B.Tech in Computer Science",
-                  desc: "IIIT Dharwad",
-                  grade:"9.05 CGPA",
-                  color: "from-purple-500 to-blue-500"
-                },
-                {
-                  year: "2022 – 2024",
-                  title: "Class XII (CBSE)",
-                  desc: "Ryan International School",
-                  grade:"90.6%",
-                  color: "from-blue-500 to-cyan-500"
-                },
-                {
-                  year: "2020 – 2022",
-                  title: "Class X (CBSE)",
-                  desc: "Ryan International School",
-                  grade:"93.2%",
-                  color: "from-cyan-500 to-purple-500"
-                },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: -50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.2 }}
-                  viewport={{ once: false }}
-                  className="mb-14 relative pl-8"
-                >
-                  {/* Gradient Dot */}
-                  <div className={`absolute -left-[11px] top-2 w-5 h-5 rounded-full 
-                  bg-gradient-to-r ${item.color} shadow-lg`}></div>
-
-                  <p className="text-sm text-purple-300 mb-1">
-                    {item.year}
-                  </p>
-
-                  <div className="bg-white/5 border border-white/10 p-5 rounded-xl hover:scale-[1.03] transition">
-                    <h4 className="font-semibold text-lg">
-                      {item.title}
-                    </h4>
-                    <p className="text-gray-400 text-sm mt-1">
-                      {item.desc}
-                    </p>
-                     <p className="text-purple-300 text-sm mt-2 font-semibold">
-    {item.grade}
-  </p>
-                  </div>
-                </motion.div>
-              ))}
-
-            </div>
-
-          </div>
-
-          {/* RIGHT SIDE */}
-          <div>
-
-            <h3 className="text-xl font-semibold mb-8 text-pink-400">
-              💡 Core Skills
-            </h3>
+            {/* Vertical Path Line */}
+            <div className="absolute left-2 top-0 w-[2px] h-full bg-[#30363d]"></div>
 
             {[
-              { name: "DSA", percent: 50, color: "from-purple-500 to-pink-500" },
-              { name: "React ", percent: 100, color: "from-blue-500 to-cyan-500" },
-              { name: "C++ ", percent: 100, color: "from-indigo-500 to-purple-500" },
-              { name: "Node.js", percent: 10, color: "from-green-400 to-emerald-600" },
-              { name: "System Design", percent: 10, color: "from-yellow-400 to-orange-500" },
-            ].map((skill, index) => (
-              <div key={index} className="mb-8">
+              {
+                year: "2024 – 2028",
+                title: "B.Tech Computer Science",
+                place: "IIIT Dharwad",
+                grade: "9.05 CGPA"
+              },
+              {
+                year: "2022 – 2024",
+                title: "Class XII (CBSE)",
+                place: "Ryan International School",
+                grade: "90.6%"
+              },
+              {
+                year: "2020 – 2022",
+                title: "Class X (CBSE)",
+                place: "Ryan International School",
+                grade: "93.2%"
+              },
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="ml-8 mb-12 relative"
+              >
+                {/* Dot */}
+                <div className="absolute -left-[14px] top-2 w-3 h-3 rounded-full bg-[#3fb950]"></div>
 
-                <div className="flex justify-between mb-2 text-sm">
-                  <span>{skill.name}</span>
-                  <span className="text-gray-300">
-                    {skill.percent}%
-                  </span>
+                <p className="text-xs text-[#8b949e] font-mono mb-1">
+                  {item.year}
+                </p>
+
+                <div className="bg-[#161b22] border border-[#30363d] rounded-lg p-4">
+                  <h4 className="font-semibold text-[#c9d1d9]">
+                    {item.title}
+                  </h4>
+                  <p className="text-[#8b949e] text-sm mt-1">
+                    {item.place}
+                  </p>
+                  <p className="text-[#3fb950] text-sm mt-2 font-mono">
+                    {item.grade}
+                  </p>
                 </div>
-
-                <div className="w-full h-3 bg-white/10 rounded-full overflow-hidden">
-                  <motion.div
-                    initial={{ width: 0 }}
-                    whileInView={{ width: `${skill.percent}%` }}
-                    transition={{ duration: 1, delay: index * 0.2 }}
-                    viewport={{ once: true }}
-                    className={`h-3 rounded-full bg-gradient-to-r ${skill.color}`}
-                  />
-                </div>
-
-              </div>
+              </motion.div>
             ))}
-
-            {/* Tech Stack */}
-            <h3 className="text-xl font-semibold mt-16 mb-6 text-yellow-400">
-              🛠 Tech Stack
-            </h3>
-
-            <div className="flex flex-wrap gap-3">
-              {[
-                "React ⚛️",
-                
-                
-                "C++",
-                "Python 🐍",
-                
-              
-              
-                
-                "Git",
-                "Tailwind",
-                "Redis"
-              ].map((tech, index) => (
-                <motion.span
-                  key={index}
-                  whileHover={{ y: -6 }}
-                  className="px-4 py-2 text-sm rounded-full 
-                  bg-gradient-to-r from-purple-600/20 to-blue-600/20 
-                  border border-white/10 hover:from-purple-600/40 hover:to-blue-600/40 
-                  transition cursor-pointer"
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </div>
 
           </div>
 
         </div>
+
+        {/* SKILLS SECTION */}
+        <div className="mt-24">
+
+          <p className="text-sm text-[#8b949e] font-mono mb-4">
+            // Core Skills
+          </p>
+
+          <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm">
+            <span className="text-[#ff7b72]">const</span>{" "}
+            <span className="text-[#79c0ff]">skills</span> = [
+            <div className="ml-6 text-[#3fb950]">
+              "C++",
+              "Data Structures",
+              "Algorithms",
+              "React",
+              "Node.js",
+              "TailwindCSS",
+              "Git",
+              "Redis"
+            </div>
+            ];
+          </div>
+
+        </div>
+
       </div>
     </section>
   )

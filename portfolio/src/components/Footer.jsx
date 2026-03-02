@@ -9,35 +9,30 @@ function Footer() {
   }
 
   return (
-    <footer className="bg-[#070d1a] text-white px-6 md:px-8 py-16 relative overflow-hidden border-t border-white/10">
+    <footer className="bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-16 border-t border-[#30363d]">
 
-      {/* Subtle Glow */}
-      <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[400px] h-[400px] bg-purple-600/10 blur-[120px] rounded-full"></div>
+      <div className="max-w-6xl mx-auto text-center">
 
-      <div className="max-w-6xl mx-auto relative z-10 text-center">
-
-        {/* Tagline */}
-        <motion.h3
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+        {/* Terminal Tagline */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-2xl md:text-3xl font-semibold mb-8 
-          bg-gradient-to-r from-purple-400 via-blue-400 to-cyan-400 
-          bg-clip-text text-transparent"
+          className="font-mono text-sm mb-10"
         >
-          Let’s build something great together 🚀
-        </motion.h3>
+          <span className="text-[#3fb950]">$</span>{" "}
+          echo "Let’s build something meaningful."
+        </motion.div>
 
         {/* Social Icons */}
-        <div className="flex justify-center gap-6 mb-8 text-xl">
+        <div className="flex justify-center gap-6 mb-10 text-lg">
 
           <a
             href="https://github.com/siddhantkumar101"
             target="_blank"
             rel="noreferrer"
-            className="p-3 bg-white/5 border border-white/10 rounded-full 
-            hover:bg-purple-600/20 hover:scale-110 transition"
+            className="p-3 bg-[#161b22] border border-[#30363d] rounded-md hover:border-[#3fb950] transition"
           >
             <FaGithub />
           </a>
@@ -46,16 +41,14 @@ function Footer() {
             href="https://www.linkedin.com/in/siddhant-kumar-dev"
             target="_blank"
             rel="noreferrer"
-            className="p-3 bg-white/5 border border-white/10 rounded-full 
-            hover:bg-blue-600/20 hover:scale-110 transition"
+            className="p-3 bg-[#161b22] border border-[#30363d] rounded-md hover:border-[#3fb950] transition"
           >
             <FaLinkedin />
           </a>
 
           <a
             href="mailto:kumarsiddhant815@gmail.com"
-            className="p-3 bg-white/5 border border-white/10 rounded-full 
-            hover:bg-purple-600/20 hover:scale-110 transition"
+            className="p-3 bg-[#161b22] border border-[#30363d] rounded-md hover:border-[#3fb950] transition"
           >
             <FaEnvelope />
           </a>
@@ -64,8 +57,7 @@ function Footer() {
             href="https://leetcode.com/u/siddhant080306/"
             target="_blank"
             rel="noreferrer"
-            className="p-3 bg-white/5 border border-white/10 rounded-full 
-            hover:bg-yellow-500/20 hover:scale-110 transition"
+            className="p-3 bg-[#161b22] border border-[#30363d] rounded-md hover:border-[#3fb950] transition"
           >
             <SiLeetcode />
           </a>
@@ -73,10 +65,14 @@ function Footer() {
         </div>
 
         {/* Divider */}
-        <div className="border-t border-white/10 pt-6 text-sm text-gray-400">
+        <div className="border-t border-[#30363d] pt-6 text-sm text-[#8b949e] font-mono">
 
           <p>
-            © {new Date().getFullYear()} Siddhant Kumar. Built with React & Tailwind.
+            © {new Date().getFullYear()} Siddhant Kumar
+          </p>
+
+          <p className="mt-2">
+            Built with React + Tailwind CSS
           </p>
 
         </div>
@@ -84,9 +80,9 @@ function Footer() {
         {/* Back To Top */}
         <button
           onClick={scrollToTop}
-          className="mt-6 text-sm text-purple-400 hover:text-white transition"
+          className="mt-6 text-sm font-mono text-[#3fb950] hover:underline transition"
         >
-          ↑ Back to Top
+          ↑ backToTop()
         </button>
 
       </div>
