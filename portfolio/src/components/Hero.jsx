@@ -5,11 +5,12 @@ import { SiLeetcode } from "react-icons/si"
 
 function Hero() {
   return (
-    <section className="relative min-h-screen 
+    <section
+      className="relative min-h-screen 
       bg-white dark:bg-[#070d1a] 
       text-black dark:text-white 
-      overflow-hidden transition-colors duration-300">
-
+      overflow-hidden transition-colors duration-300"
+    >
       {/* Background Glow */}
       <div className="absolute top-[-200px] left-[-200px] w-[600px] h-[600px] 
         bg-purple-600/20 blur-[140px] rounded-full"></div>
@@ -17,7 +18,7 @@ function Hero() {
       <div className="absolute bottom-[-200px] right-[-200px] w-[600px] h-[600px] 
         bg-blue-600/20 blur-[140px] rounded-full"></div>
 
-      {/* Gradient Overlay FIXED */}
+      {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b 
         from-transparent 
         via-gray-100 dark:via-[#0b1120] 
@@ -65,7 +66,7 @@ function Hero() {
               2000,
               "React Developer",
               2000,
-              "DSA Enthusiast",
+              "Full Stack Learner",
               2000
             ]}
             speed={50}
@@ -77,22 +78,15 @@ function Hero() {
             Passionate about building scalable web applications and mastering Data Structures & Algorithms.
           </p>
 
-          {/* Buttons */}
-          <div className="flex gap-4 pt-4">
-            <button className="px-7 py-3 
-              bg-gradient-to-r from-purple-600 to-blue-600 
-              text-white rounded-lg shadow-lg 
-              hover:scale-105 transition">
-              View Projects
-            </button>
-
+          {/* Download CV Button */}
+          <div className="pt-4">
             <button
               onClick={() => window.open("/resume.pdf")}
               className="px-7 py-3 
                 border border-gray-400 dark:border-gray-600 
                 rounded-lg 
                 hover:bg-gray-200 dark:hover:bg-gray-800 
-                transition">
+                transition hover:scale-105">
               Download CV
             </button>
           </div>
@@ -142,7 +136,6 @@ function Hero() {
           transition={{ duration: 1 }}
           className="md:w-1/2 flex justify-center mt-16 md:mt-0 relative z-10"
         >
-
           <motion.div
             animate={{ y: [0, -15, 0] }}
             transition={{ duration: 6, repeat: Infinity }}
@@ -162,7 +155,7 @@ function Hero() {
             />
           </motion.div>
 
-          {/* LeetCode Floating Card FIXED */}
+          {/* LeetCode Floating Card */}
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -180,7 +173,6 @@ function Hero() {
               siddhant080306
             </p>
           </motion.div>
-
         </motion.div>
 
       </div>
