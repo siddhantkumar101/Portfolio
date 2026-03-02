@@ -20,8 +20,6 @@ function Navbar() {
     "About",
     "Projects",
     "Skills",
-    "Game",
-   
     "Contact"
   ]
 
@@ -46,7 +44,6 @@ function Navbar() {
 
         {/* Desktop Nav */}
         <div className="hidden md:flex gap-8 text-gray-600 dark:text-gray-300 text-sm">
-
           {navItems.map((item) => (
             <a
               key={item}
@@ -57,7 +54,6 @@ function Navbar() {
               <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-gradient-to-r from-purple-500 to-blue-500 transition-all duration-300 group-hover:w-full"></span>
             </a>
           ))}
-
         </div>
 
         {/* Theme Toggle */}
