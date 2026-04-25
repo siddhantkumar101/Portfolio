@@ -20,48 +20,48 @@ function Projects() {
   const [loading, setLoading] = useState(true)
 
   // Fallback data in case GitHub API rate limits us (403 Forbidden)
-  const fallbackProjects = [
-    {
-      id: 1,
-      title: "chattrix-chat-application",
-      desc: "Real-time chat application built with MERN stack.",
-      tech: ["JavaScript"],
-      github: "https://github.com/siddhantkumar101/chattrix-chat-application",
-      live: "https://chattrix-chat-application.vercel.app",
-      stars: 0,
-      forks: 0
-    },
-    {
-      id: 2,
-      title: "fishingattackdemosite",
-      desc: "Cybersecurity demonstration site for phishing attack awareness.",
-      tech: ["JavaScript"],
-      github: "https://github.com/siddhantkumar101/fishingattackdemosite",
-      live: "https://fishingattackdemosite.vercel.app",
-      stars: 0,
-      forks: 0
-    },
-    {
-      id: 3,
-      title: "automated_timetable_website",
-      desc: "Automated timetable generator for educational institutions.",
-      tech: ["Python"],
-      github: "https://github.com/siddhantkumar101/automated_timetable_website",
-      live: "https://automated-timetable-website.vercel.app",
-      stars: 0,
-      forks: 0
-    },
-    {
-      id: 4,
-      title: "armor_ai_financial_advising",
-      desc: "AI-powered financial advising platform with intelligent portfolio management.",
-      tech: ["JavaScript", "Python"],
-      github: "https://github.com/siddhantkumar101/armor_ai_financial_advising",
-      live: "https://armor-ai-financial-advising-fon5.vercel.app/",
-      stars: 1,
-      forks: 0
-    }
-  ]
+    const fallbackProjects = [
+      {
+        id: 1,
+        title: "chattrix-chat-application",
+        desc: "A secure, real-time messaging platform built with the MERN stack and Socket.io. Features JWT authentication, live presence indicators, and a responsive UI.",
+        tech: ["JavaScript"],
+        github: "https://github.com/siddhantkumar101/chattrix-chat-application",
+        live: "https://chattrix-chat-application.vercel.app",
+        stars: 0,
+        forks: 0
+      },
+      {
+        id: 2,
+        title: "fishingattackdemosite",
+        desc: "An educational cybersecurity demonstration platform designed to simulate phishing attacks and spread awareness about common social engineering vulnerabilities.",
+        tech: ["JavaScript"],
+        github: "https://github.com/siddhantkumar101/fishingattackdemosite",
+        live: "https://fishingattackdemosite.vercel.app",
+        stars: 0,
+        forks: 0
+      },
+      {
+        id: 3,
+        title: "automated_timetable_website",
+        desc: "An algorithmic scheduling system that automates the generation of conflict-free timetables for educational institutions, optimizing resource allocation.",
+        tech: ["Python"],
+        github: "https://github.com/siddhantkumar101/automated_timetable_website",
+        live: "https://automated-timetable-website.vercel.app",
+        stars: 0,
+        forks: 0
+      },
+      {
+        id: 4,
+        title: "armor_ai_financial_advising",
+        desc: "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.",
+        tech: ["JavaScript", "Python"],
+        github: "https://github.com/siddhantkumar101/armor_ai_financial_advising",
+        live: "https://armor-ai-financial-advising-fon5.vercel.app/",
+        stars: 1,
+        forks: 0
+      }
+    ]
 
   useEffect(() => {
     // Fetch live repos from backend
@@ -72,12 +72,23 @@ function Projects() {
       })
       .then(data => {
         if (Array.isArray(data)) {
-          // Manually inject the live link for Armor AI if it's fetched from GitHub
+          // Manually inject the live link and descriptions for deployed projects
           const processedData = data.map(p => {
-            if (p.title.includes('armor_ai')) {
-              return { ...p, live: "https://armor-ai-financial-advising-fon5.vercel.app/" }
+            let desc = p.desc;
+            let live = p.live;
+            
+            if (p.title.includes('chattrix')) {
+              desc = "A secure, real-time messaging platform built with the MERN stack and Socket.io. Features JWT authentication, live presence indicators, and a responsive UI.";
+            } else if (p.title.includes('fishingattack')) {
+              desc = "An educational cybersecurity demonstration platform designed to simulate phishing attacks and spread awareness about common social engineering vulnerabilities.";
+            } else if (p.title.includes('timetable')) {
+              desc = "An algorithmic scheduling system that automates the generation of conflict-free timetables for educational institutions, optimizing resource allocation.";
+            } else if (p.title.includes('armor_ai')) {
+              live = "https://armor-ai-financial-advising-fon5.vercel.app/";
+              desc = "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.";
             }
-            return p
+            
+            return { ...p, live, desc: desc !== 'No description provided.' ? desc : p.desc }
           })
           
           // Filter deployed projects: live exists AND (live is not github link)
