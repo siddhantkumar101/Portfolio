@@ -65,7 +65,7 @@ function Projects() {
 
   useEffect(() => {
     // Fetch live repos from backend
-    fetch("http://localhost:5000/api/projects")
+    fetch("https://portfolio-za9x.onrender.com/api/projects")
       .then(res => {
         if (!res.ok) throw new Error("API failed")
         return res.json()
