@@ -28,6 +28,7 @@ function Projects() {
         tech: ["JavaScript"],
         github: "https://github.com/siddhantkumar101/chattrix-chat-application",
         live: "https://chattrix-chat-application.vercel.app",
+        image: "/assets/projects/chattrix.png",
         stars: 0,
         forks: 0
       },
@@ -38,6 +39,7 @@ function Projects() {
         tech: ["JavaScript"],
         github: "https://github.com/siddhantkumar101/fishingattackdemosite",
         live: "https://fishingattackdemosite.vercel.app",
+        image: "/assets/projects/fishing.png",
         stars: 0,
         forks: 0
       },
@@ -48,6 +50,7 @@ function Projects() {
         tech: ["Python"],
         github: "https://github.com/siddhantkumar101/automated_timetable_website",
         live: "https://automated-timetable-website.vercel.app",
+        image: "/assets/projects/timetable.png",
         stars: 0,
         forks: 0
       },
@@ -58,6 +61,7 @@ function Projects() {
         tech: ["JavaScript", "Python"],
         github: "https://github.com/siddhantkumar101/armor_ai_financial_advising",
         live: "https://armor-ai-financial-advising-fon5.vercel.app/",
+        image: "/assets/projects/armor.png",
         stars: 1,
         forks: 0
       }
@@ -76,19 +80,24 @@ function Projects() {
           const processedData = data.map(p => {
             let desc = p.desc;
             let live = p.live;
+            let image = null;
             
             if (p.title.includes('chattrix')) {
               desc = "A secure, real-time messaging platform built with the MERN stack and Socket.io. Features JWT authentication, live presence indicators, and a responsive UI.";
+              image = "/assets/projects/chattrix.png";
             } else if (p.title.includes('fishingattack')) {
               desc = "An educational cybersecurity demonstration platform designed to simulate phishing attacks and spread awareness about common social engineering vulnerabilities.";
+              image = "/assets/projects/fishing.png";
             } else if (p.title.includes('timetable')) {
               desc = "An algorithmic scheduling system that automates the generation of conflict-free timetables for educational institutions, optimizing resource allocation.";
+              image = "/assets/projects/timetable.png";
             } else if (p.title.includes('armor_ai')) {
               live = "https://armor-ai-financial-advising-fon5.vercel.app/";
               desc = "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.";
+              image = "/assets/projects/armor.png";
             }
             
-            return { ...p, live, desc: desc !== 'No description provided.' ? desc : p.desc }
+            return { ...p, live, image, desc: desc !== 'No description provided.' ? desc : p.desc }
           })
           
           // Filter deployed projects: live exists AND (live is not github link)
@@ -147,6 +156,13 @@ function Projects() {
                 className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 hover:border-[#3fb950] transition group flex flex-col justify-between"
               >
                 <div>
+                  {project.image && (
+                    <img 
+                      src={project.image} 
+                      alt={project.title} 
+                      className="w-full h-48 object-cover rounded-lg mb-6 border border-[#30363d]" 
+                    />
+                  )}
                   <div className="flex justify-between items-start mb-6">
                     <h3 className="text-2xl font-bold text-[#c9d1d9] group-hover:text-[#3fb950] transition">
                       {project.title}
