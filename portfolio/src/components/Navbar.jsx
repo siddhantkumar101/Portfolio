@@ -1,8 +1,10 @@
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import { FaBars, FaTimes } from "react-icons/fa"
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,7 +58,36 @@ function Navbar() {
 
         </div>
 
+        {/* Mobile Menu Toggle Button */}
+        <button 
+          className="md:hidden text-[#8b949e] hover:text-[#3fb950] transition"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+        </button>
+
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && (
+        <motion.div 
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          className="md:hidden bg-[#0d1117] border-b border-[#30363d] px-8 py-4 flex flex-col gap-4 font-mono text-sm text-[#8b949e]"
+        >
+          {navItems.map((item) => (
+            <a
+              key={item}
+              href={`#${item}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className="hover:text-[#3fb950] transition py-2 border-b border-[#30363d]/50 last:border-0"
+            >
+              {item}()
+            </a>
+          ))}
+        </motion.div>
+      )}
+
     </motion.nav>
   )
 }
