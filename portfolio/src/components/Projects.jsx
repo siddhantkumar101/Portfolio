@@ -1,132 +1,190 @@
 import { motion } from "framer-motion"
-import { FaGithub, FaExternalLinkAlt } from "react-icons/fa"
-import currencyconvertor from "../assets/currencyconvertor.png"
-import evento from "../assets/evento.png"
-import megablog from "../assets/megablog.png"
-import todo from "../assets/todo.png"
+import { FaGithub, FaExternalLinkAlt, FaStar, FaCodeBranch } from "react-icons/fa"
+import { useState, useEffect } from "react"
+
+// Simple mapping for GitHub language colors
+const languageColors = {
+  JavaScript: "#f1e05a",
+  TypeScript: "#3178c6",
+  Python: "#3572A5",
+  "C++": "#f34b7d",
+  C: "#555555",
+  HTML: "#e34c26",
+  CSS: "#563d7c",
+  Java: "#b07219",
+  Various: "#3fb950" // Fallback green
+}
 
 function Projects() {
+  const [projects, setProjects] = useState([])
+  const [loading, setLoading] = useState(true)
 
-  const projects = [
+  // Fallback data in case GitHub API rate limits us (403 Forbidden)
+  const fallbackProjects = [
     {
-      title: "MegaBlog",
-      image: megablog,
-      desc: "Modern blogging platform with responsive UI.",
-      tech: ["React", "Tailwind", "JavaScript"],
-      github: "#",
-      live: "#",
+      id: 1,
+      title: "chattrix-chat-application",
+      desc: "Real-time chat application built with MERN stack.",
+      tech: ["JavaScript"],
+      github: "https://github.com/siddhantkumar101/chattrix-chat-application",
+      live: "https://chattrix-chat-application.vercel.app",
+      stars: 0,
+      forks: 0
     },
     {
-      title: "Evento",
-      image: evento,
-      desc: "Event management frontend with interactive UI.",
-      tech: ["React", "CSS"],
-      github: "#",
-      live: "#",
+      id: 2,
+      title: "fishingattackdemosite",
+      desc: "Cybersecurity demonstration site for phishing attack awareness.",
+      tech: ["JavaScript"],
+      github: "https://github.com/siddhantkumar101/fishingattackdemosite",
+      live: "https://fishingattackdemosite.vercel.app",
+      stars: 0,
+      forks: 0
     },
     {
-      title: "Currency Converter",
-      image: currencyconvertor,
-      desc: "Real-time currency converter using external API.",
-      tech: ["JavaScript", "API"],
-      github: "#",
-      live: "https://react-basic-7ygb.vercel.app/",
+      id: 3,
+      title: "automated_timetable_website",
+      desc: "Automated timetable generator for educational institutions.",
+      tech: ["Python"],
+      github: "https://github.com/siddhantkumar101/automated_timetable_website",
+      live: "https://automated-timetable-website.vercel.app",
+      stars: 0,
+      forks: 0
     },
     {
-      title: "Todo App",
-      image: todo,
-      desc: "Task manager with persistent local storage.",
-      tech: ["React"],
-      github: "#",
-      live: "https://react-basic-phi-roan.vercel.app/",
-    },
+      id: 4,
+      title: "armor_ai_financial_advising",
+      desc: "AI-powered financial advising platform with intelligent portfolio management.",
+      tech: ["JavaScript", "Python"],
+      github: "https://github.com/siddhantkumar101/armor_ai_financial_advising",
+      live: "https://armor-ai-financial-advising-fon5.vercel.app/",
+      stars: 1,
+      forks: 0
+    }
   ]
+
+  useEffect(() => {
+    // Fetch live repos from backend
+    fetch("http://localhost:5000/api/projects")
+      .then(res => {
+        if (!res.ok) throw new Error("API failed")
+        return res.json()
+      })
+      .then(data => {
+        if (Array.isArray(data)) {
+          // Manually inject the live link for Armor AI if it's fetched from GitHub
+          const processedData = data.map(p => {
+            if (p.title.includes('armor_ai')) {
+              return { ...p, live: "https://armor-ai-financial-advising-fon5.vercel.app/" }
+            }
+            return p
+          })
+          
+          // Filter deployed projects: live exists AND (live is not github link)
+          const deployedProjects = processedData.filter(p => 
+            p.live && p.live !== p.github
+          )
+          setProjects(deployedProjects)
+        } else {
+          setProjects(fallbackProjects)
+        }
+      })
+      .catch(err => {
+        console.error("Error fetching projects:", err)
+        setProjects(fallbackProjects) // Use fallback on error
+      })
+      .finally(() => setLoading(false))
+  }, [])
 
   return (
     <section
       id="projects"
-      className="min-h-screen bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-24"
+      className="min-h-screen bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-28 border-t border-[#30363d]"
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* Section Label */}
-        <p className="text-sm font-mono text-[#8b949e] mb-4">
-          // 02. Projects
+        <p className="text-sm text-[#8b949e] font-mono mb-4">
+          // 02. Deployed Projects
         </p>
 
-        <h2 className="text-4xl md:text-5xl font-bold mb-16">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold mb-16"
+        >
           Selected Work
-        </h2>
+        </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-10">
-
-          {projects.map((project, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              viewport={{ once: true }}
-              className="bg-[#161b22] border border-[#30363d] rounded-xl overflow-hidden hover:border-[#3fb950] transition"
-            >
-
-              {/* Image */}
-              <div className="border-b border-[#30363d]">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-44 object-cover"
-                />
+        {loading ? (
+          <div className="grid md:grid-cols-2 gap-8">
+            {[...Array(4)].map((_, i) => (
+              <div key={i} className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 animate-pulse h-64">
               </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid md:grid-cols-2 gap-8">
+            {projects.map((project, index) => (
+              <motion.div
+                key={project.id || index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                viewport={{ once: true }}
+                className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 hover:border-[#3fb950] transition group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex justify-between items-start mb-6">
+                    <h3 className="text-2xl font-bold text-[#c9d1d9] group-hover:text-[#3fb950] transition">
+                      {project.title}
+                    </h3>
+                    <div className="flex gap-4">
+                      <a href={project.github} target="_blank" rel="noreferrer" className="text-[#8b949e] hover:text-[#3fb950] transition">
+                        <FaGithub size={22} />
+                      </a>
+                      <a href={project.live} target="_blank" rel="noreferrer" className="text-[#8b949e] hover:text-[#3fb950] transition">
+                        <FaExternalLinkAlt size={20} />
+                      </a>
+                    </div>
+                  </div>
 
-              <div className="p-6">
-
-                {/* Project Title */}
-                <h3 className="text-xl font-semibold mb-3">
-                  {project.title}
-                </h3>
-
-                {/* Description */}
-                <p className="text-[#8b949e] text-sm mb-4">
-                  {project.desc}
-                </p>
-
-                {/* Tech Stack */}
-                <div className="font-mono text-xs text-[#3fb950] mb-6">
-                  {`stack: [${project.tech.map(t => `"${t}"`).join(", ")}]`}
+                  <p className="text-[#8b949e] mb-6 line-clamp-3">
+                    {project.desc}
+                  </p>
                 </div>
 
-                {/* Links */}
-                <div className="flex gap-6 text-sm font-mono">
+                <div>
+                  {/* GitHub Stats */}
+                  <div className="flex items-center gap-6 text-[#8b949e] text-sm font-mono mb-4">
+                    <span className="flex items-center gap-1">
+                      <FaStar className="text-[#e3b341]" /> {project.stars || 0}
+                    </span>
+                    <span className="flex items-center gap-1">
+                      <FaCodeBranch /> {project.forks || 0}
+                    </span>
+                  </div>
 
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 hover:text-[#3fb950] transition"
-                  >
-                    <FaGithub size={14} />
-                    code()
-                  </a>
-
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex items-center gap-2 hover:text-[#3fb950] transition"
-                  >
-                    <FaExternalLinkAlt size={12} />
-                    live()
-                  </a>
-
+                  <div className="flex flex-wrap gap-2">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="px-3 py-1 bg-[#0d1117] border border-[#30363d] rounded-md text-xs font-mono text-[#8b949e] flex items-center gap-2"
+                      >
+                        <span 
+                          className="w-2 h-2 rounded-full" 
+                          style={{ backgroundColor: languageColors[tech] || '#8b949e' }}
+                        ></span>
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-
-              </div>
-
-            </motion.div>
-          ))}
-
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
 
       </div>
     </section>

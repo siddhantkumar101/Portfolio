@@ -1,164 +1,128 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useRef, useState } from "react";
-import emailjs from "@emailjs/browser";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import Toast from "./Toast";
+import { motion } from "framer-motion"
+import { useRef, useState } from "react"
+import emailjs from "@emailjs/browser"
 
 function Contact() {
-  const form = useRef();
-  const [toastMessage, setToastMessage] = useState(null);
-
-  const showToast = (message) => {
-    setToastMessage(message);
-    setTimeout(() => setToastMessage(null), 3000);
-  };
+  const form = useRef()
+  const [status, setStatus] = useState("")
 
   const sendEmail = (e) => {
-    e.preventDefault();
-
-    const formData = new FormData(form.current);
+    e.preventDefault()
+    setStatus("Sending...")
 
     emailjs
-      .send(
+      .sendForm(
         "service_7v6nijb",
         "template_nqdnwis",
-        {
-          name: formData.get("name"),
-          email: formData.get("email"),
-          message: formData.get("message"),
-        },
+        form.current,
         "LIQ7HGPmkne7jF8zb"
       )
-      .then(() => {
-        showToast("Message sent successfully.");
-        form.current.reset();
-      })
-      .catch(() => {
-        showToast("Failed to send message.");
-      });
-  };
+      .then(
+        () => {
+          setStatus("Message sent successfully! ✓")
+          e.target.reset()
+          setTimeout(() => setStatus(""), 5000)
+        },
+        (error) => {
+          console.log(error.text)
+          setStatus("Failed to send message. ✕")
+        }
+      )
+  }
 
   return (
     <section
       id="contact"
-      className="min-h-screen bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-28"
+      className="bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-28 border-t border-[#30363d]"
     >
-      <AnimatePresence>
-        {toastMessage && <Toast message={toastMessage} />}
-      </AnimatePresence>
+      <div className="max-w-3xl mx-auto text-center">
 
-      <div className="max-w-6xl mx-auto">
-
-        {/* Section Label */}
         <p className="text-sm text-[#8b949e] font-mono mb-4">
-          // 06. Contact
+          // 04. What's Next?
         </p>
 
-        {/* Heading */}
-        <h2 className="text-4xl md:text-5xl font-bold mb-16">
-          Let’s Connect
-        </h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold mb-6"
+        >
+          Get In Touch
+        </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-16">
+        <p className="text-[#8b949e] mb-12">
+          Currently looking for internship opportunities. Whether you have a
+          question or just want to say hi, my inbox is always open!
+        </p>
 
-          {/* LEFT SIDE */}
-          <motion.div
-            initial={{ opacity: 0, x: -20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-          >
-            <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm">
-              <p className="text-[#3fb950] mb-4">
-                $ open --opportunities
-              </p>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 text-left"
+        >
+          <form ref={form} onSubmit={sendEmail} className="flex flex-col gap-6">
 
-              <p className="text-[#8b949e] mb-6">
-                Currently open for internships and collaborative projects.
-              </p>
-
-              <div className="space-y-4">
-                <a
-                  href="mailto:kumarsiddhant815@gmail.com"
-                  className="flex items-center gap-3 hover:text-white transition"
-                >
-                  <FaEnvelope className="text-[#3fb950]" />
-                  kumarsiddhant815@gmail.com
-                </a>
-
-                <a
-                  href="https://www.linkedin.com/in/siddhant-kumar-dev"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 hover:text-white transition"
-                >
-                  <FaLinkedin className="text-[#3fb950]" />
-                  linkedin.com/in/siddhant-kumar-dev
-                </a>
-
-                <a
-                  href="https://github.com/siddhantkumar101"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="flex items-center gap-3 hover:text-white transition"
-                >
-                  <FaGithub className="text-[#3fb950]" />
-                  github.com/siddhantkumar101
-                </a>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* RIGHT SIDE - FORM */}
-          <motion.form
-            ref={form}
-            onSubmit={sendEmail}
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.5 }}
-            viewport={{ once: true }}
-            className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 space-y-6 font-mono text-sm"
-          >
-            <div className="text-[#8b949e]">
-              // SendMessage.js
+            <div>
+              <label className="block font-mono text-sm text-[#8b949e] mb-2">
+                const name =
+              </label>
+              <input
+                type="text"
+                name="user_name"
+                required
+                placeholder='"John Doe"'
+                className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-4 py-3 text-[#c9d1d9] font-mono focus:outline-none focus:border-[#3fb950] transition"
+              />
             </div>
 
-            <input
-              type="text"
-              name="name"
-              placeholder="name"
-              required
-              className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-4 py-3 outline-none focus:border-[#3fb950] transition"
-            />
+            <div>
+              <label className="block font-mono text-sm text-[#8b949e] mb-2">
+                const email =
+              </label>
+              <input
+                type="email"
+                name="user_email"
+                required
+                placeholder='"john@example.com"'
+                className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-4 py-3 text-[#c9d1d9] font-mono focus:outline-none focus:border-[#3fb950] transition"
+              />
+            </div>
 
-            <input
-              type="email"
-              name="email"
-              placeholder="email"
-              required
-              className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-4 py-3 outline-none focus:border-[#3fb950] transition"
-            />
-
-            <textarea
-              name="message"
-              rows="4"
-              placeholder="message"
-              required
-              className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-4 py-3 outline-none focus:border-[#3fb950] transition resize-none"
-            ></textarea>
+            <div>
+              <label className="block font-mono text-sm text-[#8b949e] mb-2">
+                const message =
+              </label>
+              <textarea
+                name="message"
+                required
+                rows="5"
+                placeholder='"Hello, I would like to..."'
+                className="w-full bg-[#0d1117] border border-[#30363d] rounded-md px-4 py-3 text-[#c9d1d9] font-mono focus:outline-none focus:border-[#3fb950] transition resize-none"
+              ></textarea>
+            </div>
 
             <button
               type="submit"
-              className="w-full py-3 rounded-md border border-[#3fb950] text-[#3fb950] hover:bg-[#3fb950] hover:text-black transition"
+              className="w-full bg-[#238636] hover:bg-[#2ea043] text-white font-bold py-3 rounded-md transition duration-200 mt-2"
             >
-              send()
+              send_message()
             </button>
-          </motion.form>
 
-        </div>
+            {status && (
+              <p className={`text-center font-mono text-sm mt-4 ${status.includes('successfully') ? 'text-[#3fb950]' : 'text-[#ff7b72]'}`}>
+                {status}
+              </p>
+            )}
+
+          </form>
+        </motion.div>
+
       </div>
     </section>
-  );
+  )
 }
 
-export default Contact;
+export default Contact

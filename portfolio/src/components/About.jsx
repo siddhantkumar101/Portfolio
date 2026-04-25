@@ -32,7 +32,7 @@ function About() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm"
+            className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm shadow-lg"
           >
             <div className="text-[#8b949e] mb-4">// SiddhantProfile.js</div>
 
@@ -40,10 +40,12 @@ function About() {
 {`const siddhant = {
   role: "B.Tech CSE Student",
   college: "IIIT Dharwad",
-  cgpa: "9.05",
-  focus: ["DSA", "Competitive Programming", "Full Stack"],
-  dailyRoutine: "10 Leetcode Problems",
-  preparingFor: "Top Internship 2026",
+  cgpa: "9.05 ⭐",
+  focus: ["DSA", "Backend Development", "System Design"],
+  currentStack: ["Node.js", "Express", "MongoDB", "React"],
+  problemSolving: "10+ Leetcode/day",
+  strengths: ["Consistency", "Debugging", "Fast Learner"],
+  preparingFor: "Top SDE Internship 2026",
 };`}
             </pre>
           </motion.div>
@@ -51,7 +53,7 @@ function About() {
           {/* RIGHT SIDE - EDUCATION FLOW */}
           <div className="relative">
 
-            {/* Vertical Path Line */}
+            {/* Vertical Line */}
             <div className="absolute left-2 top-0 w-[2px] h-full bg-[#30363d]"></div>
 
             {[
@@ -83,22 +85,30 @@ function About() {
                 className="ml-8 mb-12 relative"
               >
                 {/* Dot */}
-                <div className="absolute -left-[14px] top-2 w-3 h-3 rounded-full bg-[#3fb950]"></div>
+                <div className="absolute -left-[14px] top-2 w-3 h-3 rounded-full bg-gradient-to-r from-[#3fb950] to-[#2ea043] shadow-md"></div>
 
                 <p className="text-xs text-[#8b949e] font-mono mb-1">
                   {item.year}
                 </p>
 
-                <div className="bg-[#161b22] border border-[#30363d] rounded-lg p-4">
+                <div className="bg-[#161b22] border border-[#30363d] rounded-lg p-4 
+                  hover:border-[#3fb950] hover:shadow-[0_0_15px_#3fb95033] transition">
+                  
                   <h4 className="font-semibold text-[#c9d1d9]">
                     {item.title}
                   </h4>
+
                   <p className="text-[#8b949e] text-sm mt-1">
                     {item.place}
                   </p>
-                  <p className="text-[#3fb950] text-sm mt-2 font-mono">
+
+                  {/* PREMIUM CGPA BADGE */}
+                  <p className="inline-block mt-3 px-3 py-1 text-xs font-mono rounded-full 
+                    bg-gradient-to-r from-[#3fb950] to-[#2ea043] 
+                    text-black shadow-md">
                     {item.grade}
                   </p>
+
                 </div>
               </motion.div>
             ))}
@@ -114,18 +124,18 @@ function About() {
             // Core Skills
           </p>
 
-          <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm">
+          <div className="bg-[#161b22] border border-[#30363d] rounded-xl p-6 font-mono text-sm shadow-lg">
             <span className="text-[#ff7b72]">const</span>{" "}
             <span className="text-[#79c0ff]">skills</span> = [
-            <div className="ml-6 text-[#3fb950]">
-              "C++",
-              "Data Structures",
-              "Algorithms",
-              "React",
-              "Node.js",
-              "TailwindCSS",
-              "Git",
-              "Redis"
+            <div className="ml-6 text-[#3fb950] space-y-1">
+              "C++ (STL, Problem Solving)",
+              "Data Structures & Algorithms",
+              "Competitive Programming",
+              "Backend: Node.js, Express",
+              "Database: MongoDB, Redis",
+              "Frontend: React, TailwindCSS",
+              "Version Control: Git & GitHub",
+              "Core CS: OS, DBMS, OOPs"
             </div>
             ];
           </div>

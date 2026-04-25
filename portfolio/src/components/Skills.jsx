@@ -1,109 +1,72 @@
 import { motion } from "framer-motion"
-import { FaReact, FaHtml5, FaCss3Alt, FaNodeJs } from "react-icons/fa"
-import { SiC, SiCplusplus, SiJavascript, SiPython, SiMysql, SiPostgresql, SiMongodb, SiFedora } from "react-icons/si"
 
 function Skills() {
-
-  const categories = [
+  const skillCategories = [
     {
-      title: "programmingLanguages",
-      skills: [
-        { name: "C", icon: <SiC /> },
-        { name: "C++", icon: <SiCplusplus /> },
-        { name: "JavaScript", icon: <SiJavascript /> },
-        { name: "Python", icon: <SiPython /> },
-      ]
+      title: "Languages",
+      skills: ["C++", "C", "JavaScript", "Python", "HTML/CSS"]
     },
     {
-      title: "frontendDevelopment",
-      skills: [
-        { name: "React", icon: <FaReact /> },
-        { name: "HTML", icon: <FaHtml5 /> },
-        { name: "CSS", icon: <FaCss3Alt /> },
-      ]
+      title: "Frontend",
+      skills: ["React.js", "Tailwind CSS", "Bootstrap", "EJS"]
     },
     {
-      title: "databases",
-      skills: [
-        { name: "MySQL", icon: <SiMysql /> },
-      ]
+      title: "Backend",
+      skills: ["Node.js", "Express.js", "REST APIs", "JWT Auth"]
     },
     {
-      title: "currentlyLearning",
-      skills: [
-        { name: "PostgreSQL", icon: <SiPostgresql /> },
-        { name: "Node.js", icon: <FaNodeJs /> },
-        { name: "MongoDB", icon: <SiMongodb /> },
-        { name: "Fedora Linux", icon: <SiFedora /> },
-        { name: "System Design Basics", icon: "⚙️" },
-        { name: "REST APIs", icon: "🔗" },
-        { name: "Authentication & JWT", icon: "🔐" },
-      ]
+      title: "Database & Tools",
+      skills: ["MongoDB", "MySQL", "PostgreSQL", "Git & GitHub", "Linux"]
     }
   ]
 
   return (
     <section
       id="skills"
-      className="min-h-screen bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-28"
+      className="bg-[#0d1117] text-[#c9d1d9] px-6 md:px-8 py-28 border-t border-[#30363d]"
     >
       <div className="max-w-6xl mx-auto">
 
-        {/* Section Label */}
-        <p className="text-sm font-mono text-[#8b949e] mb-4">
-          // 03. Skills
+        <p className="text-sm text-[#8b949e] font-mono mb-4">
+          // 03. Technical Arsenal
         </p>
 
-        <h2 className="text-4xl md:text-5xl font-bold mb-20">
-          Technical Stack
-        </h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-4xl md:text-5xl font-bold mb-16"
+        >
+          Skills & Technologies
+        </motion.h2>
 
-        <div className="space-y-16">
-
-          {categories.map((category, index) => (
+        <div className="grid md:grid-cols-2 gap-8">
+          {skillCategories.map((category, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
+              className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 hover:border-[#3fb950] transition"
             >
+              <h3 className="text-2xl font-bold text-[#c9d1d9] mb-6">
+                {category.title}
+              </h3>
 
-              {/* Category Header */}
-              <div className="font-mono text-sm text-[#8b949e] mb-6">
-                {`const ${category.title} = [`}
-              </div>
-
-              {/* Skills Grid */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-
+              <div className="flex flex-wrap gap-3">
                 {category.skills.map((skill, i) => (
-                  <motion.div
+                  <span
                     key={i}
-                    whileHover={{ y: -4 }}
-                    className="flex flex-col items-center justify-center 
-                    bg-[#161b22] border border-[#30363d] 
-                    rounded-lg p-6 hover:border-[#3fb950] transition"
+                    className="px-4 py-2 bg-[#0d1117] border border-[#30363d] rounded-md font-mono text-sm text-[#8b949e] hover:text-[#3fb950] hover:border-[#3fb950] transition cursor-default"
                   >
-                    <div className="text-3xl mb-3 text-[#3fb950]">
-                      {skill.icon}
-                    </div>
-
-                    <p className="text-sm font-mono text-[#c9d1d9] text-center">
-                      "{skill.name}"
-                    </p>
-                  </motion.div>
+                    {skill}
+                  </span>
                 ))}
-
               </div>
-
-              <div className="font-mono text-sm text-[#8b949e] mt-6">
-                ];
-              </div>
-
             </motion.div>
           ))}
-
         </div>
 
       </div>
