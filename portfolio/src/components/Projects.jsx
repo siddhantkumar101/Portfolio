@@ -64,6 +64,17 @@ function Projects() {
         image: "/assets/projects/armor.png",
         stars: 1,
         forks: 0
+      },
+      {
+        id: 5,
+        title: "Portfolio",
+        desc: "A stunning, dark-mode developer portfolio featuring dynamic GitHub repository fetching, modern animations, and a professional terminal-inspired aesthetic.",
+        tech: ["JavaScript", "React"],
+        github: "https://github.com/siddhantkumar101/Portfolio",
+        live: "https://github.com/siddhantkumar101/Portfolio", // Default to repo link until deployed URL is known
+        image: "/assets/projects/portfolio.png",
+        stars: 0,
+        forks: 0
       }
     ]
 
@@ -91,18 +102,23 @@ function Projects() {
             } else if (p.title.includes('timetable')) {
               desc = "An algorithmic scheduling system that automates the generation of conflict-free timetables for educational institutions, optimizing resource allocation.";
               image = "/assets/projects/timetable.png";
-            } else if (p.title.includes('armor_ai')) {
+            } else if (p.title.toLowerCase().includes('armor_ai')) {
               live = "https://armor-ai-financial-advising-fon5.vercel.app/";
               desc = "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.";
               image = "/assets/projects/armor.png";
+            } else if (p.title.toLowerCase() === 'portfolio') {
+              desc = "A stunning, dark-mode developer portfolio featuring dynamic GitHub repository fetching, modern animations, and a professional terminal-inspired aesthetic.";
+              image = "/assets/projects/portfolio.png";
+              // We'll force include the portfolio even if its live link matches the github link
+              live = p.live || p.github;
             }
             
             return { ...p, live, image, desc: desc !== 'No description provided.' ? desc : p.desc }
           })
           
-          // Filter deployed projects: live exists AND (live is not github link)
+          // Filter deployed projects: live exists AND (live is not github link OR it is the portfolio/armor project)
           const deployedProjects = processedData.filter(p => 
-            p.live && p.live !== p.github
+            p.live && (p.live !== p.github || p.title.toLowerCase() === 'portfolio' || p.title.toLowerCase().includes('armor'))
           )
           setProjects(deployedProjects)
         } else {
