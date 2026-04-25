@@ -169,7 +169,7 @@ function Projects() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
-                className="bg-[#161b22] border border-[#30363d] rounded-xl p-8 hover:border-[#3fb950] transition group flex flex-col justify-between"
+                className="bg-[#161b22] border border-[#30363d] rounded-xl p-5 md:p-8 hover:border-[#3fb950] transition group flex flex-col justify-between"
               >
                 <div>
                   {project.image && (
@@ -179,11 +179,11 @@ function Projects() {
                       className="w-full h-48 object-cover rounded-lg mb-6 border border-[#30363d]" 
                     />
                   )}
-                  <div className="flex justify-between items-start mb-6">
-                    <h3 className="text-2xl font-bold text-[#c9d1d9] group-hover:text-[#3fb950] transition">
+                  <div className="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
+                    <h3 className="text-xl md:text-2xl font-bold text-[#c9d1d9] group-hover:text-[#3fb950] transition break-words overflow-wrap-anywhere">
                       {project.title}
                     </h3>
-                    <div className="flex gap-4">
+                    <div className="flex gap-4 shrink-0">
                       <a href={project.github} target="_blank" rel="noreferrer" className="text-[#8b949e] hover:text-[#3fb950] transition">
                         <FaGithub size={22} />
                       </a>
