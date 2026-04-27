@@ -16,11 +16,9 @@ const languageColors = {
 }
 
 function Projects() {
-  const [projects, setProjects] = useState([])
-  const [loading, setLoading] = useState(true)
-
-  // Fallback data in case GitHub API rate limits us (403 Forbidden)
-    const fallbackProjects = [
+  // Show fallback immediately so cards render on page load (no blank state)
+  // Backend fetch runs in the background to silently update star/fork counts
+  const fallbackProjects = [
       {
         id: 1,
         title: "chattrix-chat-application",
@@ -71,12 +69,16 @@ function Projects() {
         desc: "A stunning, dark-mode developer portfolio featuring dynamic GitHub repository fetching, modern animations, and a professional terminal-inspired aesthetic.",
         tech: ["JavaScript", "React"],
         github: "https://github.com/siddhantkumar101/Portfolio",
-        live: "https://github.com/siddhantkumar101/Portfolio", // Default to repo link until deployed URL is known
+        live: "https://github.com/siddhantkumar101/Portfolio",
         image: "/assets/projects/portfolio.png",
         stars: 0,
         forks: 0
       }
     ]
+
+  const [projects, setProjects] = useState(fallbackProjects) // Render immediately
+  const [loading, setLoading] = useState(false)              // Never show loading skeleton
+
 
   useEffect(() => {
     // Fetch live repos from backend
