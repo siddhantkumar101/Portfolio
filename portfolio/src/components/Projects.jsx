@@ -22,10 +22,10 @@ function Projects() {
       {
         id: 1,
         title: "AutoCare Pro",
-        desc: "The Professional Automotive Service Platform AutoCare Pro is a high-end, production-ready platform designed for vehicle maintenance and detailing management. It features a streamlined booking system and a professional dashboard for tracking service history.",
+        desc: "The Professional Automotive Service Platform AutoCare Pro is a high-end, production-ready platform designed for vehicle maintenance and detailing management. Developed during my internship at Androinframind for live clients, it features a streamlined booking system and a professional dashboard.",
         tech: ["JavaScript", "React"],
         github: "https://github.com/siddhantkumar101/autocare-pro",
-        live: "https://autocare-pro.vercel.app",
+        live: "https://autocare-pro-39x6.vercel.app/",
         image: "/assets/projects/autocare.png",
         stars: 0,
         forks: 0
@@ -33,10 +33,10 @@ function Projects() {
       {
         id: 2,
         title: "Gram Bazaar",
-        desc: "The Local Community Marketplace Gram Bazaar is a robust, full-stack marketplace focused on local commerce and community-driven listings. It features secure JWT authentication, real-time product synchronization, and high-performance image management via Cloudinary.",
+        desc: "The Local Community Marketplace Gram Bazaar is a robust, full-stack marketplace focused on local commerce and community-driven listings. Developed during my internship at Androinframind for live clients, it features secure JWT authentication and real-time product synchronization.",
         tech: ["JavaScript", "Node.js"],
         github: "https://github.com/siddhantkumar101/gram-bazaar",
-        live: "https://gram-bazaar.vercel.app",
+        live: "https://gram-bazar.vercel.app/",
         image: "/assets/projects/grambazaar.png",
         stars: 0,
         forks: 0
@@ -44,10 +44,10 @@ function Projects() {
       {
         id: 3,
         title: "Giftora Studio",
-        desc: "The Premium Custom Gifting Experience Giftora is a luxury e-commerce platform that reimagines the gifting experience through its signature 'Studio' customizer. It features a mobile-first, high-performance UI built with a 'Zero-Transform' architecture.",
+        desc: "The Premium Custom Gifting Experience Giftora is a luxury e-commerce platform that reimagines gifting through its signature 'Studio' customizer. Developed during my internship at Androinframind for live clients, it features a mobile-first UI with a 'Zero-Transform' architecture.",
         tech: ["JavaScript", "React"],
         github: "https://github.com/siddhantkumar101/giftora",
-        live: "https://giftora.vercel.app",
+        live: "https://giftora-six.vercel.app/",
         image: "/assets/projects/giftora.png",
         stars: 0,
         forks: 0
@@ -109,17 +109,17 @@ function Projects() {
               desc = "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.";
               image = "/assets/projects/armor.png";
             } else if (p.title.toLowerCase().includes('autocare')) {
-              desc = "The Professional Automotive Service Platform AutoCare Pro is a high-end, production-ready platform designed for vehicle maintenance and detailing management. It features a streamlined booking system and a professional dashboard for tracking service history. The project emphasizes scalability and reliability, with a fully synchronized backend and optimized frontend architecture for high-traffic environments.";
+              desc = "The Professional Automotive Service Platform AutoCare Pro is a high-end, production-ready platform designed for vehicle maintenance and detailing management. Developed during my internship at Androinframind for live clients, it features a streamlined booking system and a professional dashboard for tracking service history. The project emphasizes scalability and reliability, with a fully synchronized backend and optimized frontend architecture for high-traffic environments.";
               image = "/assets/projects/autocare.png";
-              live = "https://autocare-pro.vercel.app";
+              live = "https://autocare-pro-39x6.vercel.app/";
             } else if (p.title.toLowerCase().includes('gram') || p.title.toLowerCase().includes('bazaar')) {
-              desc = "The Local Community Marketplace Gram Bazaar is a robust, full-stack marketplace focused on local commerce and community-driven listings. It features secure JWT authentication, real-time product synchronization, and high-performance image management via Cloudinary. The platform is architected for seamless deployment across Vercel and Render, ensuring a stable cross-origin connection between the frontend and API.";
+              desc = "The Local Community Marketplace Gram Bazaar is a robust, full-stack marketplace focused on local commerce and community-driven listings. Developed during my internship at Androinframind for live clients, it features secure JWT authentication, real-time product synchronization, and high-performance image management via Cloudinary. The platform is architected for seamless deployment across Vercel and Render, ensuring a stable cross-origin connection between the frontend and API.";
               image = "/assets/projects/grambazaar.png";
-              live = "https://gram-bazaar.vercel.app";
+              live = "https://gram-bazar.vercel.app/";
             } else if (p.title.toLowerCase().includes('giftora')) {
-              desc = "The Premium Custom Gifting Experience Giftora is a luxury e-commerce platform that reimagines the gifting experience through its signature \"Studio\" customizer. It features a mobile-first, high-performance UI built with a \"Zero-Transform\" architecture to ensure perfect stability across all devices. The site combines a high-impact aesthetic with advanced filtering and real-time gift design, creating a premium, boutique feel for high-end gifting.";
+              desc = "The Premium Custom Gifting Experience Giftora is a luxury e-commerce platform that reimagines the gifting experience through its signature \"Studio\" customizer. Developed during my internship at Androinframind for live clients, it features a mobile-first, high-performance UI built with a \"Zero-Transform\" architecture to ensure perfect stability across all devices. The site combines a high-impact aesthetic with advanced filtering and real-time gift design, creating a premium, boutique feel for high-end gifting.";
               image = "/assets/projects/giftora.png";
-              live = "https://giftora.vercel.app";
+              live = "https://giftora-six.vercel.app/";
             } else if (p.title.toLowerCase() === 'portfolio') {
               desc = "A stunning, dark-mode developer portfolio featuring dynamic GitHub repository fetching, modern animations, and a professional terminal-inspired aesthetic.";
               image = "/assets/projects/portfolio.png";
