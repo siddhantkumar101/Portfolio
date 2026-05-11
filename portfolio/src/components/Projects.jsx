@@ -21,6 +21,39 @@ function Projects() {
   const fallbackProjects = [
       {
         id: 1,
+        title: "AutoCare Pro",
+        desc: "The Professional Automotive Service Platform AutoCare Pro is a high-end, production-ready platform designed for vehicle maintenance and detailing management. It features a streamlined booking system and a professional dashboard for tracking service history.",
+        tech: ["JavaScript", "React"],
+        github: "https://github.com/siddhantkumar101/autocare-pro",
+        live: "https://autocare-pro.vercel.app",
+        image: "/assets/projects/autocare.png",
+        stars: 0,
+        forks: 0
+      },
+      {
+        id: 2,
+        title: "Gram Bazaar",
+        desc: "The Local Community Marketplace Gram Bazaar is a robust, full-stack marketplace focused on local commerce and community-driven listings. It features secure JWT authentication, real-time product synchronization, and high-performance image management via Cloudinary.",
+        tech: ["JavaScript", "Node.js"],
+        github: "https://github.com/siddhantkumar101/gram-bazaar",
+        live: "https://gram-bazaar.vercel.app",
+        image: "/assets/projects/grambazaar.png",
+        stars: 0,
+        forks: 0
+      },
+      {
+        id: 3,
+        title: "Giftora Studio",
+        desc: "The Premium Custom Gifting Experience Giftora is a luxury e-commerce platform that reimagines the gifting experience through its signature 'Studio' customizer. It features a mobile-first, high-performance UI built with a 'Zero-Transform' architecture.",
+        tech: ["JavaScript", "React"],
+        github: "https://github.com/siddhantkumar101/giftora",
+        live: "https://giftora.vercel.app",
+        image: "/assets/projects/giftora.png",
+        stars: 0,
+        forks: 0
+      },
+      {
+        id: 4,
         title: "chattrix-chat-application",
         desc: "A secure, real-time messaging platform built with the MERN stack and Socket.io. Features JWT authentication, live presence indicators, and a responsive UI.",
         tech: ["JavaScript"],
@@ -31,29 +64,7 @@ function Projects() {
         forks: 0
       },
       {
-        id: 2,
-        title: "fishingattackdemosite",
-        desc: "An educational cybersecurity demonstration platform designed to simulate phishing attacks and spread awareness about common social engineering vulnerabilities.",
-        tech: ["JavaScript"],
-        github: "https://github.com/siddhantkumar101/fishingattackdemosite",
-        live: "https://fishingattackdemosite.vercel.app",
-        image: "/assets/projects/fishing.png",
-        stars: 0,
-        forks: 0
-      },
-      {
-        id: 3,
-        title: "automated_timetable_website",
-        desc: "An algorithmic scheduling system that automates the generation of conflict-free timetables for educational institutions, optimizing resource allocation.",
-        tech: ["Python"],
-        github: "https://github.com/siddhantkumar101/automated_timetable_website",
-        live: "https://automated-timetable-website.vercel.app",
-        image: "/assets/projects/timetable.png",
-        stars: 0,
-        forks: 0
-      },
-      {
-        id: 4,
+        id: 5,
         title: "armor_ai_financial_advising",
         desc: "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.",
         tech: ["JavaScript", "Python"],
@@ -61,17 +72,6 @@ function Projects() {
         live: "https://armor-ai-financial-advising-fon5.vercel.app/",
         image: "/assets/projects/armor.png",
         stars: 1,
-        forks: 0
-      },
-      {
-        id: 5,
-        title: "Portfolio",
-        desc: "A stunning, dark-mode developer portfolio featuring dynamic GitHub repository fetching, modern animations, and a professional terminal-inspired aesthetic.",
-        tech: ["JavaScript", "React"],
-        github: "https://github.com/siddhantkumar101/Portfolio",
-        live: "https://github.com/siddhantkumar101/Portfolio",
-        image: "/assets/projects/portfolio.png",
-        stars: 0,
         forks: 0
       }
     ]
@@ -108,6 +108,18 @@ function Projects() {
               live = "https://armor-ai-financial-advising-fon5.vercel.app/";
               desc = "An advanced AI-powered financial advising platform providing intelligent portfolio management, automated risk assessment, and personalized market insights.";
               image = "/assets/projects/armor.png";
+            } else if (p.title.toLowerCase().includes('autocare')) {
+              desc = "The Professional Automotive Service Platform AutoCare Pro is a high-end, production-ready platform designed for vehicle maintenance and detailing management. It features a streamlined booking system and a professional dashboard for tracking service history. The project emphasizes scalability and reliability, with a fully synchronized backend and optimized frontend architecture for high-traffic environments.";
+              image = "/assets/projects/autocare.png";
+              live = "https://autocare-pro.vercel.app";
+            } else if (p.title.toLowerCase().includes('gram') || p.title.toLowerCase().includes('bazaar')) {
+              desc = "The Local Community Marketplace Gram Bazaar is a robust, full-stack marketplace focused on local commerce and community-driven listings. It features secure JWT authentication, real-time product synchronization, and high-performance image management via Cloudinary. The platform is architected for seamless deployment across Vercel and Render, ensuring a stable cross-origin connection between the frontend and API.";
+              image = "/assets/projects/grambazaar.png";
+              live = "https://gram-bazaar.vercel.app";
+            } else if (p.title.toLowerCase().includes('giftora')) {
+              desc = "The Premium Custom Gifting Experience Giftora is a luxury e-commerce platform that reimagines the gifting experience through its signature \"Studio\" customizer. It features a mobile-first, high-performance UI built with a \"Zero-Transform\" architecture to ensure perfect stability across all devices. The site combines a high-impact aesthetic with advanced filtering and real-time gift design, creating a premium, boutique feel for high-end gifting.";
+              image = "/assets/projects/giftora.png";
+              live = "https://giftora.vercel.app";
             } else if (p.title.toLowerCase() === 'portfolio') {
               desc = "A stunning, dark-mode developer portfolio featuring dynamic GitHub repository fetching, modern animations, and a professional terminal-inspired aesthetic.";
               image = "/assets/projects/portfolio.png";
@@ -120,7 +132,10 @@ function Projects() {
           
           // Filter deployed projects: live exists AND (live is not github link OR it is the portfolio/armor project)
           const deployedProjects = processedData.filter(p => 
-            p.live && (p.live !== p.github || p.title.toLowerCase() === 'portfolio' || p.title.toLowerCase().includes('armor'))
+            p.live && (
+              p.live !== p.github || 
+              ['portfolio', 'autocare', 'gram', 'bazaar', 'giftora', 'armor'].some(key => p.title.toLowerCase().includes(key))
+            )
           )
           setProjects(deployedProjects)
         } else {
